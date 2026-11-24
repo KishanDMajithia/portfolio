@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kishan Majithia · Data & Business Analyst</title>
+<meta name="description" content="Kishan Majithia: electronics engineer turned data and business analyst. SQL, Power BI, Python. Working on a live SAP S/4HANA migration. Can join in 15 days.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0F;--card:#14141C;--card2:#1C1C28;--line:#2C2C3C;--text:#F2EFE8;--mute:#B4B0A6;--amber:#FFC93C;--violet:#8B7BFF;--mint:#3DDBB0;--coral:#FF7A59}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Figtree,system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px}
+main,nav,footer{position:relative;z-index:1}
+a{color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.08;letter-spacing:-.01em}
+em{font-style:italic;color:var(--amber)}
+.mono{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.hand{font-family:Caveat,cursive;font-size:23px;color:var(--amber);line-height:1.15}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px 28px;background:linear-gradient(#0A0A0Fcc,#0A0A0F00)}
+.logo{font-family:Fraunces,serif;font-weight:700;font-size:21px;text-decoration:none}
+.logo b{color:var(--amber)}
+nav .links{display:flex;gap:26px;align-items:center;font-size:15px}
+nav .links a{text-decoration:none;color:var(--mute)}
+nav .links a:hover{color:var(--text)}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;background:var(--amber);color:#14110A;font-weight:600;text-decoration:none;font-size:16px;border:0;cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--amber)}
+nav .btn{padding:9px 18px;font-size:14px;color:#14110A}
+nav .links a.btn{color:#14110A}
+@media(max-width:760px){nav .links a:not(.btn){display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 70px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(44px,8vw,96px);max-width:900px}
+.hero .sub{max-width:600px;color:var(--mute);font-size:19px;margin:26px 0 34px}
+.hero .row{display:flex;gap:14px;flex-wrap:wrap}
+.facts{display:flex;gap:34px;flex-wrap:wrap;margin-top:56px;padding-top:26px;border-top:1px solid var(--line)}
+.facts div b{display:block;font-family:Fraunces,serif;font-size:30px;color:var(--text)}
+.facts div span{color:var(--mute);font-size:14px}
+.wave{position:absolute;right:-40px;top:16%;width:min(560px,60vw);opacity:.5;z-index:-1}
+
+/* switch scene */
+.scene{position:relative}
+.stick{position:sticky;top:0;height:100vh;display:flex;align-items:center}
+#switch{height:520vh}
+.sw{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;width:100%}
+.sw .lead{font-size:clamp(30px,4.2vw,50px);margin-bottom:26px}
+.steps{position:relative;min-height:190px}
+.step{position:absolute;inset:0 auto auto 0;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;max-width:460px}
+.step.on{opacity:1;transform:none}
+.step .yr{color:var(--amber)}
+.step h3{font-size:27px;margin:6px 0 8px}
+.step p{color:var(--mute)}
+.dots{display:flex;gap:8px;margin-top:20px}
+.dots i{width:30px;height:4px;border-radius:3px;background:var(--line);transition:background .4s}
+.dots i.on{background:var(--amber)}
+.chart{background:linear-gradient(180deg,var(--card),#101018);border:1px solid var(--line);border-radius:22px;padding:22px 22px 14px}
+.chart svg{width:100%;height:auto;display:block}
+.chart .cap{display:flex;justify-content:space-between;margin-top:10px}
+@media(max-width:860px){.sw{grid-template-columns:1fr;gap:20px}.step h3{font-size:22px}.steps{min-height:170px}}
+
+/* section heads */
+section.pad{padding:110px 0}
+.sh{margin-bottom:56px;max-width:720px}
+.sh h2{font-size:clamp(34px,5vw,60px);margin:10px 0 14px}
+.sh p{color:var(--mute);font-size:18px}
+
+/* projects */
+.case{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:56px 0;border-top:1px solid var(--line)}
+.case:nth-child(even){grid-template-columns:.9fr 1.1fr}
+.case:nth-child(even) .vis{order:-1}
+.case .no{font-family:Fraunces,serif;font-size:80px;line-height:1;color:var(--line);font-weight:700}
+.case h3{font-size:clamp(28px,3.4vw,40px);margin:6px 0 10px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 20px}
+.tools span{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:3px 11px}
+dl.qa{display:grid;grid-template-columns:110px 1fr;gap:12px 18px}
+dl.qa dt{font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);padding-top:5px}
+dl.qa dd{color:var(--text)}
+.case .more{display:inline-block;margin-top:22px;color:var(--amber);text-decoration:none;border-bottom:1px solid var(--amber);padding-bottom:2px}
+.vis{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px;min-height:330px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.vis .big{font-family:Fraunces,serif;font-weight:700;font-size:62px;line-height:1}
+.vis small{color:var(--mute);max-width:280px;font-size:14px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:860px){.case,.case:nth-child(even){grid-template-columns:1fr;gap:28px}.case:nth-child(even) .vis{order:0}dl.qa{grid-template-columns:1fr;gap:2px}dl.qa dd{margin-bottom:10px}}
+.donut circle{fill:none;stroke-width:22}
+.donut .arc{stroke:var(--coral);stroke-linecap:round;transition:stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1)}
+.bars5{display:flex;align-items:flex-end;gap:12px;height:150px;width:100%;max-width:300px}
+.bars5 i{flex:1;background:var(--violet);border-radius:6px 6px 0 0;height:0;transition:height 1.2s cubic-bezier(.2,.7,.2,1)}
+.bars5 i:nth-child(1){background:var(--amber)}
+.grid60{display:grid;grid-template-columns:repeat(10,1fr);gap:9px;width:100%;max-width:300px}
+.grid60 i{aspect-ratio:1;border-radius:50%;background:var(--line);transition:background .5s,transform .5s;transform:scale(.4)}
+.grid60.in i{transform:scale(1)}
+.key{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:13px;color:var(--mute)}
+.key b{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+
+/* right now */
+.now{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.desk{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:34px;position:relative}
+.desk .live{display:inline-flex;align-items:center;gap:9px;color:var(--mint)}
+.desk .live:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 var(--mint);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px #3DDBB000}100%{box-shadow:0 0 0 0 #3DDBB000}}
+.desk h3{font-size:30px;margin:14px 0 4px}
+.desk p{color:var(--mute)}
+.desk .hand{margin-top:22px;display:block;transform:rotate(-2deg)}
+.todo{list-style:none}
+.todo li{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:20px 0;border-bottom:1px solid var(--line)}
+.todo li:first-child{padding-top:0}
+.todo .ic{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--amber);display:grid;place-items:center;color:var(--amber);font-family:"JetBrains Mono",monospace;font-size:13px}
+.todo li.learn .ic{border-color:var(--violet);color:var(--violet)}
+.todo b{display:block;font-size:18px;font-weight:600}
+.todo span{color:var(--mute);font-size:15.5px}
+@media(max-width:860px){.now{grid-template-columns:1fr;gap:34px}}
+
+/* skills -> work */
+.sk{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:start}
+.chips{display:flex;flex-direction:column;gap:10px}
+.chip{text-align:left;background:transparent;border:1px solid var(--line);color:var(--text);padding:15px 20px;border-radius:14px;font:inherit;font-size:17px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all .25s}
+.chip:hover{border-color:var(--amber)}
+.chip.on{background:var(--amber);color:#14110A;border-color:var(--amber);font-weight:600}
+.chip i{font-style:normal;opacity:.6}
+.proof{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px;position:sticky;top:90px;min-height:340px}
+.proof .at{color:var(--amber)}
+.proof h3{font-size:30px;margin:10px 0 14px}
+.proof p{color:var(--mute);margin-bottom:12px}
+.proof .res{display:flex;gap:30px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line);flex-wrap:wrap}
+.proof .res b{font-family:Fraunces,serif;font-size:36px;display:block;color:var(--mint);line-height:1.1}
+.proof .res span{font-size:13.5px;color:var(--mute)}
+.proof .swap{animation:fade .45s}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:860px){.sk{grid-template-columns:1fr}.proof{position:static}}
+
+/* proof strip */
+.creds{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border-top:1px solid var(--line)}
+.creds div{padding:26px 24px 26px 0;border-bottom:1px solid var(--line)}
+.creds b{display:block;font-size:18px;font-weight:600;margin-bottom:3px}
+.creds span{color:var(--mute);font-size:15px}
+.creds a{color:var(--amber);font-size:14px}
+
+/* final */
+.final{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.final h2{font-size:clamp(38px,6vw,76px)}
+.final .ask{margin-top:34px;border-top:1px solid var(--line)}
+.final .ask div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
+.final .ask dt{color:var(--mute);font-size:15px}
+.promise{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:34px}
+.promise ol{list-style:none;counter-reset:p}
+.promise li{counter-increment:p;padding:0 0 22px 52px;position:relative}
+.promise li:before{content:counter(p);position:absolute;left:0;top:-2px;width:36px;height:36px;border-radius:50%;background:var(--amber);color:#14110A;font-family:Fraunces,serif;font-weight:700;display:grid;place-items:center}
+.promise li b{display:block;font-size:18px}
+.promise li span{color:var(--mute);font-size:15.5px}
+.promise .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+@media(max-width:860px){.final{grid-template-columns:1fr}}
+footer{padding:44px 28px;text-align:center;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}.step{transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#top">KM<b>.</b></a>
+  <div class="links">
+    <a href="#switch">The switch</a><a href="#work">Projects</a><a href="#now">Right now</a><a href="#skills">Skills at work</a>
+    <a class="btn" href="#hire">Hire me</a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<header class="hero">
+  <svg class="wave" viewBox="0 0 560 200" fill="none" aria-hidden="true"><path id="hw" d="" stroke="#8B7BFF" stroke-width="2.5" stroke-linecap="round"/></svg>
+  <div class="wrap">
+    <p class="mono">Kishan Majithia · Data &amp; Business Analyst · Fresher</p>
+    <h1 style="margin-top:18px">I learned to read signals. Now I read <em>business data.</em></h1>
+    <p class="sub">Electronics engineer who moved into analytics with SQL, Power BI and Python. I am working on a live SAP migration right now, and I can join in 15 days.</p>
+    <div class="row">
+      <a class="btn" href="#hire">Work with me</a>
+      <a class="btn ghost" href="#work">See my projects</a>
+    </div>
+    <div class="facts">
+      <div><b>8.72</b><span>CGPA, B.Tech ECE</span></div>
+      <div><b>3</b><span>analytics projects</span></div>
+      <div><b>78K+</b><span>offer records analysed</span></div>
+      <div><b>6 h → 10 min</b><span>review time, automated</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- THE SWITCH -->
+<section class="scene" id="switch">
+  <div class="stick"><div class="wrap sw">
+    <div>
+      <p class="mono">The switch · scroll</p>
+      <h2 class="lead" style="margin-top:10px">From a wave on a scope to a <em>bar on a dashboard.</em></h2>
+      <div class="steps" id="steps">
+        <div class="step on"><span class="mono yr">2022</span><h3>Started in electronics</h3><p>B.Tech in Electronics &amp; Communication. Signals, circuits, MATLAB. I learned to clean noise and find what is real.</p></div>
+        <div class="step"><span class="mono yr">Leading people</span><h3>Ran a 50-member chapter</h3><p>Chair of the IEEE Signal Processing Society at college. We ran SIGNAL 4.0 for 300+ people, up 20% on last year, on a Rs 4 lakh budget.</p></div>
+        <div class="step"><span class="mono yr">Minor in CS</span><h3>Added code and machine learning</h3><p>Python, scikit-learn, XGBoost. In my ML internship I compared 7 models on crop data. The best one reached 96.87% accuracy.</p></div>
+        <div class="step"><span class="mono yr">Self-driven</span><h3>Taught myself the analyst toolkit</h3><p>SQL, Power BI, DAX, Excel, Streamlit. Three projects on real-style retail and hospital data, plus a Deloitte job simulation and four SAP finance courses.</p></div>
+        <div class="step"><span class="mono yr">Aug 2026</span><h3>First job: a live SAP migration</h3><p>I now turn business needs into documents and automate the slow parts. Same habit as before: find the pattern, explain it clearly.</p></div>
+      </div>
+      <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="chart">
+      <svg id="morph" viewBox="0 0 600 330" role="img" aria-label="A signal wave that turns into a bar chart as you scroll"></svg>
+      <div class="cap"><span class="mono" id="capL">Signal</span><span class="mono" id="capR">Raw wave</span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- PROJECTS -->
+<section class="pad" id="work"><div class="wrap">
+  <div class="sh reveal"><p class="mono">Projects</p><h2>Three questions I <em>went and answered.</em></h2><p>Each one starts with a plain business question. Practice data, built the way I would do it at work.</p></div>
+
+  <article class="case reveal">
+    <div>
+      <div class="no">01</div>
+      <h3>Where is the hospital's money <em>not</em> real?</h3>
+      <div class="tools"><span>Python</span><span>MySQL</span><span>SQL</span><span>Streamlit</span></div>
+      <dl class="qa">
+        <dt>Question</dt><dd>Does the revenue the hospital reports match the care it actually gave?</dd>
+        <dt>What I did</dt><dd>Followed each patient from booking to payment across five linked tables. Added 14 automatic data checks and a dashboard with 20+ KPIs.</dd>
+        <dt>What I found</dt><dd>Most billing records belonged to appointments that never finished. A hidden risk in the revenue numbers.</dd>
+      </dl>
+      <a class="more" href="https://github.com/KishanDMajithia/hospital-operations-analytics" target="_blank" rel="noopener">See the code on GitHub →</a>
+    </div>
+    <div class="vis">
+      <svg class="donut" width="210" height="210" viewBox="0 0 210 210" aria-hidden="true">
+        <circle cx="105" cy="105" r="86" stroke="#2C2C3C"/>
+        <circle class="arc" id="arc77" cx="105" cy="105" r="86" transform="rotate(-90 105 105)" stroke-dasharray="540.4" stroke-dashoffset="540.4"/>
+        <text x="105" y="118" text-anchor="middle" fill="#F2EFE8" font-family="Fraunces,serif" font-size="46" font-weight="700">77%</text>
+      </svg>
+      <small>of billing records were tied to appointments that were never completed.</small>
+    </div>
+  </article>
+
+  <article class="case reveal">
+    <div>
+      <div class="no">02</div>
+      <h3>Which offers actually bring shoppers <em>back?</em></h3>
+      <div class="tools"><span>MySQL</span><span>SQL</span><span>Power BI</span><span>DAX</span><span>Python</span></div>
+      <dl class="qa">
+        <dt>Question</dt><dd>Which offers and which customers are worth the next campaign?</dd>
+        <dt>What I did</dt><dd>Cleaned and modelled 78K+ offer records in SQL. Ranked offers by how likely they are to be redeemed. Built a five-page Power BI dashboard with DAX measures.</dd>
+        <dt>What I found</dt><dd>A clear order of which offers and customer groups to push first, down to coupon and category level.</dd>
+      </dl>
+      <a class="more" href="https://github.com/KishanDMajithia" target="_blank" rel="noopener">More on my GitHub →</a>
+    </div>
+    <div class="vis">
+      <div class="big" id="cnt78" data-to="78">0</div>
+      <div class="mono" style="margin-top:-8px">K+ records</div>
+      <div class="bars5" id="bars5"><i data-h="92"></i><i data-h="74"></i><i data-h="58"></i><i data-h="41"></i><i data-h="26"></i></div>
+      <small>Offers ranked from most to least likely to be redeemed. Shape is an illustration, not real values.</small>
+    </div>
+  </article>
+
+  <article class="case reveal">
+    <div>
+      <div class="no">03</div>
+      <h3>Why does a store <em>lose its shoppers?</em></h3>
+      <div class="tools"><span>Python</span><span>Pandas</span><span>Plotly</span><span>Excel</span><span>GitHub Actions</span></div>
+      <dl class="qa">
+        <dt>Question</dt><dd>Across 60 stores, where does the shopper journey leak, and what should each outlet do next?</dd>
+        <dt>What I did</dt><dd>Broke the shopper funnel down store by store and ranked every outlet as Scale, Protect, Fix or Deprioritize. Then automated the weekly KPI email with alerts for exceptions.</dd>
+        <dt>What I found</dt><dd>Where sales leaked, and a plain next step for each store.</dd>
+      </dl>
+      <a class="more" href="https://github.com/KishanDMajithia/traya-retail-intelligence" target="_blank" rel="noopener">See the code on GitHub →</a>
+    </div>
+    <div class="vis">
+      <div class="grid60" id="g60"></div>
+      <div class="key"><span><b style="background:var(--mint)"></b>Scale</span><span><b style="background:var(--violet)"></b>Protect</span><span><b style="background:var(--amber)"></b>Fix</span><span><b style="background:var(--coral)"></b>Deprioritize</span></div>
+      <small>60 stores, four actions. The colours here are a sample layout, not real store results.</small>
+    </div>
+  </article>
+</div></section>
+
+<!-- RIGHT NOW -->
+<section class="pad" id="now" style="background:linear-gradient(180deg,transparent,#0f0f16 30%,#0f0f16 70%,transparent)"><div class="wrap">
+  <div class="sh reveal"><p class="mono">Right now</p><h2>Where I work, and <em>what is on my desk.</em></h2></div>
+  <div class="now">
+    <div class="desk reveal">
+      <span class="mono live">Working now · Aug 2026 – present</span>
+      <h3>Business Analyst Intern</h3>
+      <p>SAP S/4HANA migration · Cloudlity, on the CIDCO project · Mumbai</p>
+      <p style="margin-top:18px">CIDCO is moving its old SAP system to the new S/4HANA. My job is to turn what the business team says into clear documents, and to make the slow, manual parts faster.</p>
+      <span class="hand">this is where my skills get used every day →</span>
+    </div>
+    <ul class="todo reveal">
+      <li><span class="ic">01</span><div><b>Writing a new module from zero</b><span>Design Document, blueprint (BBP), DIM and test documents for the Legal Tracking System.</span></div></li>
+      <li><span class="ic">02</span><div><b>Testing a citizen portal automatically</b><span>A script walks every service form, takes screenshots and builds the test report and a field list in Excel.</span></div></li>
+      <li><span class="ic">03</span><div><b>Supporting the CRM team with automation</b><span>Checks and fills that used to take hours by hand.</span></div></li>
+      <li class="learn"><span class="ic">04</span><div><b>Learning, on purpose</b><span>SAP finance (FICO), plus Tableau, Power Query and statistics to go deeper on the analyst side.</span></div></li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- SKILLS AT WORK -->
+<section class="pad" id="skills"><div class="wrap">
+  <div class="sh reveal"><p class="mono">Skills at work</p><h2>Not a list of tools. <em>What each one did.</em></h2><p>Tap a skill to see where I used it on the job.</p></div>
+  <div class="sk">
+    <div class="chips" id="chips"></div>
+    <div class="proof" id="proof"></div>
+  </div>
+</div></section>
+
+<!-- CREDENTIALS -->
+<section class="pad" style="padding-top:20px"><div class="wrap">
+  <div class="sh reveal"><p class="mono">On paper</p><h2>The <em>proof</em> behind it.</h2></div>
+  <div class="creds reveal">
+    <div><b>B.Tech, Electronics &amp; Communication</b><span>TKM College of Engineering · 2026 · CGPA 8.72 · Minor in Computer Science</span></div>
+    <div><b>Data Analytics Job Simulation</b><span>Deloitte, via Forage · 2026</span></div>
+    <div><b>SAP finance courses (4)</b><span>Record to Report, Payables, Receivables, Asset Accounting · 2026<br><a href="https://badger.learning.sap.com/verify/xucyn-lynup-nigyt-fofed-helan" target="_blank" rel="noopener">Verify one →</a></span></div>
+    <div><b>Introduction to Machine Learning</b><span>NPTEL, IIT Madras · Elite · 2025</span></div>
+    <div><b>Chair, IEEE Signal Processing Society</b><span>Led 50+ members · SIGNAL 4.0 · 300+ attendees</span></div>
+    <div><b>Research paper accepted</b><span>Spiking-neuron circuit design · 2026 conference</span></div>
+  </div>
+</div></section>
+
+<!-- FINAL DEAL -->
+<section class="pad" id="hire"><div class="wrap final">
+  <div class="reveal">
+    <p class="mono">The deal</p>
+    <h2 style="margin-top:10px">Give me the data. I will bring the <em>answer.</em></h2>
+    <dl class="ask">
+      <div><dt>Looking for</dt><dd>Data Analyst, Business Analyst, BI Analyst. Open to product and finance analytics.</dd></div>
+      <div><dt>Where</dt><dd>Hyderabad, Mumbai, Bangalore, Kochi. Ready to relocate.</dd></div>
+      <div><dt>Start</dt><dd>15 days after an offer.</dd></div>
+      <div><dt>Work type</dt><dd>Full time, from the office.</dd></div>
+    </dl>
+  </div>
+  <div class="promise reveal">
+    <p class="mono" style="margin-bottom:18px">What you can count on</p>
+    <ol>
+      <li><b>I start from the question</b><span>Every project above opens with a business question, not a chart.</span></li>
+      <li><b>I check my own numbers</b><span>Data checks and reviews built in, so you can trust the result.</span></li>
+      <li><b>I remove repeat work</b><span>If I do a task twice, I try to make it run on its own.</span></li>
+    </ol>
+    <div class="btnrow">
+      <a class="btn" href="mailto:kishan13majithia@gmail.com?subject=Hello%20Kishan">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/kishandmajithia" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/KishanDMajithia" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div></section>
+
+</main>
+<footer>Kishan Majithia · Mumbai · kishan13majithia@gmail.com</footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+
+  /* hero wave */
+  var hw=document.getElementById('hw'),d='';
+  for(var x=0;x<=560;x+=8){var y=100+Math.sin(x/38)*42+Math.sin(x/11)*9;d+=(x?'L':'M')+x+' '+y.toFixed(1)}
+  hw.setAttribute('d',d);
+
+  /* switch: wave -> bars */
+  var svg=document.getElementById('morph'),N=30,W=600,H=330,base=290,top0=36,items=[];
+  var vals=[.28,.34,.3,.42,.38,.5,.46,.58,.52,.62,.57,.7,.66,.74,.69,.8,.76,.84,.8,.88,.84,.9,.86,.93,.9,.95,.92,.97,.94,1];
+  var gx=document.createElementNS(NS,'line');gx.setAttribute('x1',30);gx.setAttribute('x2',W-20);gx.setAttribute('y1',base+2);gx.setAttribute('y2',base+2);gx.setAttribute('stroke','#2C2C3C');svg.appendChild(gx);
+  for(var i=0;i<N;i++){var r=document.createElementNS(NS,'rect');svg.appendChild(r);items.push(r)}
+  var mid=base-120;
+  function lerp(a,b,t){return a+(b-a)*t}
+  function mix(c1,c2,t){var o=[];for(var k=0;k<3;k++)o.push(Math.round(lerp(c1[k],c2[k],t)));return 'rgb('+o+')'}
+  var VIO=[139,123,255],AMB=[255,201,60];
+  function draw(t){
+    var e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2; /* ease */
+    var bw=lerp(5,15,e),gap=(W-60)/N;
+    for(var i=0;i<N;i++){
+      var cx=30+gap*i+gap/2;
+      var sy=mid+Math.sin(i/N*Math.PI*4.2)*70+Math.sin(i*1.7)*10;
+      var bh=vals[i]*(base-top0);
+      var h=lerp(4,bh,e);
+      var yTop=lerp(sy-2,base-bh,e);
+      var r=items[i];
+      r.setAttribute('x',(cx-bw/2).toFixed(1));r.setAttribute('width',bw.toFixed(1));
+      r.setAttribute('y',yTop.toFixed(1));r.setAttribute('height',Math.max(h,4).toFixed(1));
+      r.setAttribute('rx',lerp(2,4,e).toFixed(1));
+      r.setAttribute('fill',mix(VIO,AMB,e));
+    }
+    gx.style.opacity=e;
+    document.getElementById('capL').textContent=t<.55?'Signal':'Sales by month';
+    document.getElementById('capR').textContent=t<.55?'Raw wave':'Same habit, new material';
+  }
+  draw(0);
+  var sc=document.getElementById('switch'),steps=document.querySelectorAll('#steps .step'),dots=document.querySelectorAll('#dots i'),cur=0;
+  function prog(){
+    var r=sc.getBoundingClientRect(),total=sc.offsetHeight-window.innerHeight;
+    var p=Math.min(1,Math.max(0,-r.top/total));
+    /* wave holds, then morphs between 20% and 80% of the scroll */
+    var t=Math.min(1,Math.max(0,(p-.18)/.62));
+    draw(reduce?(p>.5?1:0):t);
+    var idx=Math.min(steps.length-1,Math.floor(p*steps.length));
+    if(idx!==cur){steps[cur].classList.remove('on');dots[cur].classList.remove('on');cur=idx;steps[cur].classList.add('on');dots[cur].classList.add('on')}
+  }
+  var tick=false;
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(function(){prog();tick=false})}},{passive:true});
+  window.addEventListener('resize',prog);prog();
+
+  /* reveal + triggers */
+  var g60=document.getElementById('g60');
+  var cols=['var(--mint)','var(--violet)','var(--amber)','var(--coral)'];
+  var layout=[0,0,1,0,2,1,0,3,1,0, 1,2,0,0,1,3,0,2,1,0, 0,1,3,0,2,0,1,0,2,1, 2,0,1,1,0,3,0,0,1,2, 0,3,0,1,2,0,1,2,0,0, 1,0,2,0,3,1,0,0,2,1];
+  layout.forEach(function(c){var i=document.createElement('i');i.dataset.c=cols[c];g60.appendChild(i)});
+  function fireVis(el){
+    if(el.querySelector('#arc77')){setTimeout(function(){document.getElementById('arc77').style.strokeDashoffset=540.4*(1-.77)},250)}
+    if(el.querySelector('#cnt78')){var c=document.getElementById('cnt78'),n=0,to=78,iv=setInterval(function(){n+=reduce?78:2;if(n>=to){n=to;clearInterval(iv)}c.textContent=n},22);
+      document.querySelectorAll('#bars5 i').forEach(function(b,k){setTimeout(function(){b.style.height=b.dataset.h+'%'},200+k*130)})}
+    if(el.querySelector('#g60')){g60.classList.add('in');g60.querySelectorAll('i').forEach(function(i,k){setTimeout(function(){i.style.background=i.dataset.c},300+k*22)})}
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');fireVis(e.target);io.unobserve(e.target)}})},{threshold:.25});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  if(reduce)document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');fireVis(el)});
+
+  /* skills -> work */
+  var S=[
+   {k:'Python automation',at:'Flowchart review',h:'Checking blueprint flowcharts by script, not by eye',p:['Each blueprint document has a flowchart that must match its written use case. Reviewing them one by one took hours.','I wrote a check that reads the flowchart logic and compares it with the use-case spec.'],r:[['6 h → 10 min','review time'],['23','broken TO-BE flowcharts caught']]},
+   {k:'Data validation',at:'Citizen portal testing',h:'Testing every service form, automatically',p:['The portal has many schemes and services, each with its own form. A script opens each one, takes screenshots and records every field with its allowed data type.','It also draws the structure as a tree: scheme, then service, then fields.'],r:[['Word + Excel','test report and field list']]},
+   {k:'Excel',at:'Field inventory',h:'One clean table out of a messy portal',p:['Every field name and data type for every service goes into a single Excel sheet: scheme, service, field, type.','The team can filter it and see what is missing.']},
+   {k:'SQL thinking',at:'Data model of the portal',h:'Seeing the portal as linked tables',p:['The same habit I used on the hospital database: know how things link before you count them.','Scheme → service → fields became a clear hierarchy, which made the test plan complete.']},
+   {k:'Process mapping',at:'CRM blueprint',h:'AS-IS and TO-BE, in plain steps',p:['Turned meetings with the business team into blueprint documents for the CRM module, mapping how the process works today and how it should work after the move.']},
+   {k:'Stakeholder talk',at:'Legal Tracking System',h:'A whole module, written from zero',p:['Asked the questions, gathered the needs, then wrote the Design Document, blueprint, DIM and test documents for the new Legal Tracking System.']},
+   {k:'AI-assisted workflow',at:'56 business documents',h:'No more copy-pasting tables',p:['Table data had to be filled across 56 process documents. I set up an AI-assisted workflow that did it, and I checked the output.'],r:[['56','documents filled']]}
+  ];
+  var chips=document.getElementById('chips'),proof=document.getElementById('proof');
+  S.forEach(function(s,i){var b=document.createElement('button');b.className='chip'+(i?'':' on');b.innerHTML=s.k+'<i>→</i>';b.onclick=function(){show(i)};chips.appendChild(b)});
+  function show(i){
+    var s=S[i];
+    chips.querySelectorAll('.chip').forEach(function(c,k){c.classList.toggle('on',k===i)});
+    var h='<div class="swap"><span class="mono at">Used at · '+s.at+'</span><h3>'+s.h+'</h3>'+s.p.map(function(t){return '<p>'+t+'</p>'}).join('');
+    if(s.r)h+='<div class="res">'+s.r.map(function(x){return '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('')+'</div>';
+    proof.innerHTML=h+'</div>';
+  }
+  show(0);
+})();
+</script>
+</body>
+</html>
