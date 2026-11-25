@@ -253,10 +253,27 @@ footer{padding:44px 28px;text-align:center;color:var(--mute);font-size:14px;bord
 .chips button.on{background:var(--accent);border-color:var(--accent);color:#14110A}
 .ach.hide{display:none}
 .certgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-.cert{perspective:900px;height:250px;cursor:pointer;background:none;border:0;text-align:left}
+.cert{perspective:900px;height:370px;cursor:pointer;background:none;border:0;text-align:left}
 .cert{display:block;width:100%}
+.cert .thumbs{display:grid;gap:7px;flex:1;min-height:0;margin-top:4px}
+.cert .thumbs.n4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.cert .thumbs.n3{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr}
+.cert .thumbs img{width:100%;height:100%;min-height:0;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--line);background:#fff}
+.cert .thumbs.n3 img{object-fit:contain;background:none;border:0}
+.cert.stack .f{transition:border-color .3s,transform .3s}
+.cert.stack:hover .f,.cert.stack:focus-visible .f{border-color:var(--accent);transform:translateY(-4px)}
+.mbox.wide{max-width:1100px;overflow:auto}
+.certall{display:grid;gap:14px;margin-top:16px}
+.certall.n4{grid-template-columns:repeat(4,1fr)}
+.certall.n3{grid-template-columns:repeat(3,1fr)}
+.certall figure{margin:0}
+.certall img{display:block;width:100%;height:auto;max-height:60vh;object-fit:contain;background:#fff;border-radius:8px;cursor:zoom-in}
+.certall.n3 img{background:none}
+.certall figcaption{font-size:13.5px;color:var(--mute);margin-top:8px;text-align:center}
+.certhint{margin-top:16px;color:var(--mute);font-size:14px}
+@media(max-width:700px){.certall.n4,.certall.n3{grid-template-columns:1fr 1fr}}
 .cert .in{display:block;position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
-.cert:hover .in,.cert:focus-visible .in,.cert.flip .in{transform:rotateY(180deg)}
+.cert:not(.stack):hover .in,.cert:not(.stack):focus-visible .in,.cert.flip .in{transform:rotateY(180deg)}
 .cert .f,.cert .b{text-align:left;position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:12px;padding:26px;background:var(--ink2);display:flex;flex-direction:column;gap:8px}
 .cert .b{transform:rotateY(180deg);border-color:var(--accent)}
 .cert .seal{width:44px;height:44px;border:1.5px solid var(--accent);border-radius:50%;display:grid;place-items:center;color:var(--accent);font-family:var(--serif);font-size:20px;margin-bottom:6px}
@@ -468,7 +485,7 @@ body{overflow-x:clip}
 
 <!-- CERTIFICATES -->
 <section class="pad rule" id="certs"><div class="wrap">
-  <div class="sh reveal"><p class="label acc">Certifications</p><h2>Learning, <em>with proof.</em></h2><p>Hover or tap a card to see how it helps on the job.</p></div>
+  <div class="sh reveal"><p class="label acc">Certifications</p><h2>Learning, <em>with proof.</em></h2><p>Hover or tap a card to turn it over. Click the SAP card to see all four certificates.</p></div>
   <div class="certgrid reveal" id="certgrid"></div>
 </div></section>
 
@@ -904,23 +921,46 @@ var ag=$('#agrid'),modal=$('#modal'),mbox=$('#mbox');
 A.forEach(function(a,i){var b=document.createElement('button');b.className='ach';b.dataset.c=a.c;b.innerHTML=(a.img?'<span class="bg" style="background-image:url('+a.img+')'+(a.port?';background-position:top':'')+'"></span>':'')+'<span class="label yr">'+a.y+'</span><h3>'+a.t+'</h3><p>'+a.s+'</p><span class="go">See behind the scenes →</span>';b.addEventListener('click',function(){openModal(i)});ag.appendChild(b)});
 function openModal(i){
   var a=A[i];
+  mbox.classList.remove('wide');
   mbox.innerHTML='<button class="x" aria-label="Close">×</button><span class="label acc">'+a.y+'</span><h3>'+a.t+'</h3>'+(a.img?'<span class="ph"><img src="'+a.img+'" alt=""></span>':'')+'<dl><div><dt>My role</dt><dd>'+a.role+'</dd></div><div><dt>The team</dt><dd>'+a.team+'</dd></div><div><dt>What I did</dt><dd>'+a.did+'</dd></div><div><dt>Result</dt><dd>'+a.res+(a.note?' '+a.note:'')+'</dd></div></dl>';
   $('.x',mbox).addEventListener('click',closeModal);
   modal.classList.add('on');
 }
 function closeModal(){modal.classList.remove('on')}
+/* achievement popups use the normal width */
 $$('#chips button').forEach(function(c){c.addEventListener('click',function(){$$('#chips button').forEach(function(x){x.classList.toggle('on',x===c)});var f=c.dataset.f;$$('.ach',ag).forEach(function(a){a.classList.toggle('hide',f!=='all'&&a.dataset.c!==f)})})});
 /* certificates */
 var CERTS=[
- {k:'S',t:'SAP finance courses (4)',w:'Record to Report, Payables, Receivables, Asset Accounting · 2026',h:'Gives me the finance vocabulary behind the SAP work I do at CIDCO, so a business request makes sense the first time I hear it.',list:['Outlining Processes in Record to Report','Outlining Processes in Payables Management','Outlining Processes in Receivables Management','Outlining Processes in Asset Accounting']},
+ {k:'S',grid:1,t:'SAP finance courses (4)',w:'Record to Report, Payables, Receivables, Asset Accounting · 2026',h:'Gives me the finance vocabulary behind the SAP work I do at CIDCO, so a business request makes sense the first time I hear it.',imgs:[['cert-sap-r2r','Record to Report'],['cert-sap-ap','Payables Management'],['cert-sap-ar','Receivables Management'],['cert-sap-aa','Asset Accounting']]},
  {k:'M',t:'Introduction to Machine Learning',w:'NPTEL, IIT Madras · Elite · 2025',h:'The base for my ML work: how models learn, how to test them, and when not to trust one.'},
  {k:'D',t:'Data Analytics',w:'Deloitte, via Forage · 2026',h:'Practice at the analyst loop: read a business request, analyse the data, and present what it means.'},
  {k:'C',t:'Credit Analyst',w:'Forage · Nov 2026',h:'Financial health analysis and industry research: reading a company\'s numbers and its market before judging risk. Useful for finance and credit analytics work.'},
  {k:'G',t:'GenAI Powered Data Analytics',w:'Forage · Nov 2026',h:'Exploratory analysis and risk profiling, predicting delinquency with AI, and turning the result into a collections strategy report.'},
- {k:'A',t:'Claude Academy (3 badges)',w:'Claude 101, Claude Code 101, Claude Platform 101 · 2026',h:'A base for using AI tools carefully in analyst work, like the AI-assisted document workflow I run at CIDCO. I check every output.'}
+ {k:'A',t:'Claude Academy (3 badges)',w:'Claude 101, Claude Code 101, Claude Platform 101 · 2026',h:'A base for using AI tools carefully in analyst work, like the AI-assisted document workflow I run at CIDCO. I check every output.',imgs:[['cert-claude-101','Claude 101'],['cert-claude-code','Claude Code 101'],['cert-claude-platform','Claude Platform 101']]}
 ];
-$('#certgrid').innerHTML=CERTS.map(function(c){return '<button class="cert" aria-label="'+c.t+'"><span class="in"><span class="f"><span class="seal">'+c.k+'</span><h3>'+c.t+'</h3><p>'+c.w+'</p><span class="label" style="margin-top:auto">Hover or tap</span></span><span class="b">'+(c.list?'<span class="label acc">The 4 SAP certificates</span><ul class="clist">'+c.list.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>':'<span class="label acc">How it helps your team</span><p>'+c.h+'</p>')+'</span></span></button>'}).join('');
-$$('.cert').forEach(function(c){c.addEventListener('click',function(e){if(e.target.closest('a'))return;c.classList.toggle('flip')})});
+function certImg(m){return '<img src="img/'+m[0]+'.jpg" alt="'+m[1]+' certificate" loading="lazy">'}
+function thumbs(c){return '<span class="thumbs n'+c.imgs.length+'">'+c.imgs.map(certImg).join('')+'</span>'}
+$('#certgrid').innerHTML=CERTS.map(function(c,i){
+  var head='<span class="seal">'+c.k+'</span><h3>'+c.t+'</h3><p>'+c.w+'</p>';
+  var help='<span class="label acc">How it helps your team</span><p>'+c.h+'</p>';
+  var inner;
+  if(c.grid) inner='<span class="f">'+head+thumbs(c)+'<span class="label acc">Click to see all '+c.imgs.length+'</span></span>';
+  else inner='<span class="f">'+head+'<span class="label" style="margin-top:auto">Hover or tap</span></span><span class="b">'+(c.imgs?thumbs(c):'')+help+(c.imgs?'<span class="label acc">Click to enlarge</span>':'')+'</span>';
+  return '<button class="cert'+(c.grid?' stack':'')+'" data-i="'+i+'" aria-label="'+c.t+'"><span class="in">'+inner+'</span></button>'
+}).join('');
+function openCerts(i){
+  var c=CERTS[i];
+  mbox.innerHTML='<button class="x" aria-label="Close">×</button><span class="label acc">'+c.w+'</span><h3>'+c.t+'</h3><div class="certall n'+c.imgs.length+'">'+c.imgs.map(function(m){return '<figure>'+certImg(m)+'<figcaption>'+m[1]+'</figcaption></figure>'}).join('')+'</div><p class="certhint">'+c.h+' Click a certificate to enlarge it.</p>';
+  $('.x',mbox).addEventListener('click',closeModal);
+  $$('.certall img',mbox).forEach(zoomable);
+  mbox.classList.add('wide');
+  modal.classList.add('on');
+}
+$$('.cert').forEach(function(el){el.addEventListener('click',function(){
+  var c=CERTS[+el.dataset.i],touchOnly=window.matchMedia('(hover:none)').matches;
+  if(c.grid||(c.imgs&&(!touchOnly||el.classList.contains('flip'))))openCerts(+el.dataset.i);
+  else el.classList.toggle('flip');
+})});
 modal.addEventListener('click',function(e){if(e.target===modal)closeModal()});
 
 /* ---------- smooth glide + auto tour ---------- */
