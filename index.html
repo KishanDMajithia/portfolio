@@ -260,6 +260,10 @@ footer{padding:44px 28px;text-align:center;color:var(--mute);font-size:14px;bord
 .cert .thumbs.n3{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr}
 .cert .thumbs img{width:100%;height:100%;min-height:0;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--line);background:#fff}
 .cert .thumbs.n3 img{object-fit:contain;background:none;border:0}
+.cert .thumbs.n1{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr)}
+.cert .thumbs.n1 img{object-fit:contain;background:none;border:0}
+.certall.n1{grid-template-columns:1fr}
+.certall.n1 img{max-height:66vh;background:none}
 .cert.stack .f{transition:border-color .3s,transform .3s}
 .cert.stack:hover .f,.cert.stack:focus-visible .f{border-color:var(--accent);transform:translateY(-4px)}
 .mbox.wide{max-width:1100px;overflow:auto}
@@ -933,9 +937,9 @@ $$('#chips button').forEach(function(c){c.addEventListener('click',function(){$$
 var CERTS=[
  {k:'S',grid:1,t:'SAP finance courses (4)',w:'Record to Report, Payables, Receivables, Asset Accounting · 2026',h:'Gives me the finance vocabulary behind the SAP work I do at CIDCO, so a business request makes sense the first time I hear it.',imgs:[['cert-sap-r2r','Record to Report'],['cert-sap-ap','Payables Management'],['cert-sap-ar','Receivables Management'],['cert-sap-aa','Asset Accounting']]},
  {k:'M',t:'Introduction to Machine Learning',w:'NPTEL, IIT Madras · Elite · 2025',h:'The base for my ML work: how models learn, how to test them, and when not to trust one.'},
- {k:'D',t:'Data Analytics',w:'Deloitte, via Forage · 2026',h:'Practice at the analyst loop: read a business request, analyse the data, and present what it means.'},
- {k:'C',t:'Credit Analyst',w:'Forage · Nov 2026',h:'Financial health analysis and industry research: reading a company\'s numbers and its market before judging risk. Useful for finance and credit analytics work.'},
- {k:'G',t:'GenAI Powered Data Analytics',w:'Forage · Nov 2026',h:'Exploratory analysis and risk profiling, predicting delinquency with AI, and turning the result into a collections strategy report.'},
+ {k:'D',t:'Data Analytics',imgs:[['cert-deloitte-data','Data Analytics']],w:'Deloitte, via Forage · 2026',h:'Practice at the analyst loop: read a business request, analyse the data, and present what it means.'},
+ {k:'C',t:'Credit Analyst',imgs:[['cert-credit-analyst','Credit Analyst']],w:'Forage · Nov 2026',h:'Financial health analysis and industry research: reading a company\'s numbers and its market before judging risk. Useful for finance and credit analytics work.'},
+ {k:'G',t:'GenAI Powered Data Analytics',imgs:[['cert-genai-data','GenAI Powered Data Analytics']],w:'Forage · Nov 2026',h:'Exploratory analysis and risk profiling, predicting delinquency with AI, and turning the result into a collections strategy report.'},
  {k:'A',t:'Claude Academy (3 badges)',w:'Claude 101, Claude Code 101, Claude Platform 101 · 2026',h:'A base for using AI tools carefully in analyst work, like the AI-assisted document workflow I run at CIDCO. I check every output.',imgs:[['cert-claude-101','Claude 101'],['cert-claude-code','Claude Code 101'],['cert-claude-platform','Claude Platform 101']]}
 ];
 function certImg(m){return '<img src="img/'+m[0]+'.jpg" alt="'+m[1]+' certificate" loading="lazy">'}
