@@ -630,7 +630,7 @@ function smooth(a,b,x){var t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t)}
     /* filter marker */
     var fx=(cut0+cut1)/2;cx.strokeStyle='rgba(233,180,76,.3)';cx.setLineDash([4,6]);cx.beginPath();cx.moveTo(fx,H*.2);cx.lineTo(fx,floor);cx.stroke();cx.setLineDash([]);
     cx.fillStyle='rgba(233,180,76,.8)';cx.font='600 11px Manrope, sans-serif';
-    cx.fillText('NOISE',cut0*.4,H*.2+12);cx.fillText('FILTER',fx-18,H*.2+12);cx.fillText('DATA',barStart+10,H*.2+12);
+    cx.fillText('NOISE',cut0*.4,92);cx.fillText('FILTER',fx-18,92);cx.fillText('DATA',barStart+10,92);
     if(!reduce)requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
